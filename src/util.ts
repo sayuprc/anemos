@@ -42,7 +42,7 @@ export const fillBlack = (p: p5SVG) => {
   p.fill(0, 0, 0)
 }
 
-type Point = {
+export type Point = {
   x: number
   y: number
 }
@@ -50,15 +50,15 @@ type Point = {
 /**
  * 円を 5 等分する線の座標を求める
  */
-export const calculateDivideCirclePoints = (p: p5SVG, origin: number, radius: number): [Point, Point] => {
+export const calculateDivideCirclePoints = (p: p5SVG, origin: Point, radius: number): [Point, Point] => {
   const points = []
 
   for (const v of [...Array(2).keys()]) {
     // 原点から 72° の線の線を引くと 5 等分になる
     const angle = (72 * v * p.PI) / 180
     // 原点 + 半径 + cos(Θ)|sin(Θ)
-    const x = origin + radius * p.cos(angle)
-    const y = origin + radius * p.sin(angle)
+    const x = origin.x + radius * p.cos(angle)
+    const y = origin.y + radius * p.sin(angle)
     points.push({ x, y })
   }
 

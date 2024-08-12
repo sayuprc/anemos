@@ -1,5 +1,5 @@
 import type { p5SVG } from 'p5.js-svg'
-import { drawSquareForDev, fillWhite, fillBlack, fillBlue, calculateDivideCirclePoints } from './util'
+import { drawSquareForDev, fillWhite, fillBlack, fillBlue, calculateDivideCirclePoints, type Point } from './util'
 
 const side = 500
 
@@ -7,9 +7,15 @@ const side = 500
 const radius = side / 2
 
 // 原点
-const origin = side / 2
+const origin: Point = {
+  x: side / 2,
+  y: side / 2,
+}
 
-const originAfterMoving = 0
+const originAfterMoving: Point = {
+  x: 0,
+  y: 0,
+}
 
 const leftSideAnemosSketch = (p: p5SVG) => {
   p.setup = () => {
@@ -24,9 +30,9 @@ const leftSideAnemosSketch = (p: p5SVG) => {
   }
 }
 
-const drawAnemos = (p: p5SVG, origin: number, originAfterMoving: number, radius: number) => {
+export const drawAnemos = (p: p5SVG, origin: Point, originAfterMoving: Point, radius: number) => {
   p.push()
-  p.translate(origin, origin)
+  p.translate(origin.x, origin.y)
   p.rotate(p.radians(30))
 
   // 葉の描画
@@ -105,24 +111,24 @@ const drawLeaves = (p: p5SVG, radius: number) => {
   p.endShape()
 }
 
-const drawPetal = (p: p5SVG, originAfterMoving: number) => {
+const drawPetal = (p: p5SVG, originAfterMoving: Point) => {
   // 花弁の青い部分を先に塗る
   fillBlue(p)
-  p.ellipse(originAfterMoving, originAfterMoving, 100)
+  p.ellipse(originAfterMoving.x, originAfterMoving.y, 100)
   // 花弁の白い部分を先に塗る
   fillWhite(p)
-  p.ellipse(originAfterMoving, originAfterMoving, 66)
+  p.ellipse(originAfterMoving.x, originAfterMoving.y, 66)
 
   const [primary, secondary] = calculateDivideCirclePoints(p, originAfterMoving, 50)
   const [miniPrimary, miniSecondary] = calculateDivideCirclePoints(p, originAfterMoving, 33)
 
   for (let i = 0; i < 5; i++) {
     p.push()
-    p.translate(originAfterMoving, originAfterMoving)
+    p.translate(originAfterMoving.x, originAfterMoving.y)
     p.rotate(p.radians(i * 72))
 
     p.noStroke()
-    p.point(originAfterMoving, originAfterMoving)
+    p.point(originAfterMoving.x, originAfterMoving.y)
     p.point(secondary.x, secondary.y)
     p.point(secondary.x + primary.x, secondary.y - primary.y)
     p.point(primary.x, primary.y)
@@ -133,11 +139,11 @@ const drawPetal = (p: p5SVG, originAfterMoving: number) => {
     // 青い花弁の色
     fillBlue(p)
     p.beginShape()
-    p.curveVertex(originAfterMoving, originAfterMoving)
+    p.curveVertex(originAfterMoving.x, originAfterMoving.y)
     p.curveVertex(secondary.x, secondary.y)
     p.curveVertex(secondary.x + primary.x, secondary.y - primary.y)
     p.curveVertex(primary.x, primary.y)
-    p.curveVertex(originAfterMoving, originAfterMoving)
+    p.curveVertex(originAfterMoving.x, originAfterMoving.y)
     p.endShape()
 
     // 白い部分
@@ -157,19 +163,19 @@ const drawPetal = (p: p5SVG, originAfterMoving: number) => {
     p.endShape()
 
     p.strokeWeight(1)
-    p.line(originAfterMoving, originAfterMoving, primary.x, primary.y)
+    p.line(originAfterMoving.x, originAfterMoving.y, primary.x, primary.y)
 
     p.pop()
   }
 }
 
-const drawFloralOrgans = (p: p5SVG, originAfterMoving: number) => {
+const drawFloralOrgans = (p: p5SVG, originAfterMoving: Point) => {
   // 中心の円
   p.stroke(0)
   fillWhite(p)
-  p.ellipse(originAfterMoving, originAfterMoving, 50)
+  p.ellipse(originAfterMoving.x, originAfterMoving.y, 50)
   fillBlack(p)
-  p.ellipse(originAfterMoving, originAfterMoving, 30)
+  p.ellipse(originAfterMoving.x, originAfterMoving.y, 30)
 }
 
 export { leftSideAnemosSketch }
