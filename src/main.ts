@@ -6,6 +6,18 @@ import { anemosSketch } from './anemos'
 
 init(p5)
 
-new p5(leftSideAnemosSketch)
-new p5(rightSideAnemosSketch)
-new p5(anemosSketch)
+const left = document.createElement('div')
+left.id = 'right'
+document.body.appendChild(left)
+
+const right = document.createElement('div')
+right.id = 'right'
+document.body.appendChild(right)
+
+const anemoses = document.createElement('div')
+anemoses.id = 'right'
+document.body.appendChild(anemoses)
+
+new p5(leftSideAnemosSketch, left)
+new p5(rightSideAnemosSketch, right)
+new p5(anemosSketch, anemoses)

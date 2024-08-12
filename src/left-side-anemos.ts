@@ -21,6 +21,9 @@ const leftSideAnemosSketch = (p: p5SVG) => {
   p.setup = () => {
     p.createCanvas(side, side, p.SVG)
     p.noLoop()
+
+    const button = p.createButton('SVG ダウンロード')
+    button.mousePressed(() => p.save('anemos-left.svg'))
   }
 
   p.draw = () => {
