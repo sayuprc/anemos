@@ -1,0 +1,25 @@
+{
+  "name": "anemos",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format .",
+    "format:fix": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/p5": "^1.7.6",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "p5": "^1.6.0",
+    "p5.js-svg": "^1.5.1"
+  }
+}
