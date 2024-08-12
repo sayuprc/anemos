@@ -1,5 +1,5 @@
 import type { p5SVG } from 'p5.js-svg'
-import { drawSquareForDev, type Point } from './util'
+import type { Point } from './util'
 import { drawAnemos as drawLeftSideAnemos } from './left-side-anemos'
 import { drawAnemos as drawRightSideAnemos } from './right-side-anemos'
 
@@ -23,10 +23,9 @@ const anemosSketch = (p: p5SVG) => {
   }
 
   p.draw = () => {
-    // drawSquareForDev(p)
-
-    drawLeftSideAnemos(p, { x: 195, y: 220 }, originAfterMoving, radius)
-    drawRightSideAnemos(p, { x: 310, y: 252 }, originAfterMoving, radius)
+    p.scale(1.8)
+    drawLeftSideAnemos(p, { x: 195 - 115, y: 220 / 2 }, originAfterMoving, radius)
+    drawRightSideAnemos(p, { x: 310 - 115, y: 252 / 2 }, originAfterMoving, radius)
   }
 }
 

@@ -1,5 +1,5 @@
 import type { p5SVG } from 'p5.js-svg'
-import { drawSquareForDev, fillWhite, fillBlack, fillBlue, calculateDivideCirclePoints, type Point } from './util'
+import { fillWhite, fillBlack, fillBlue, calculateDivideCirclePoints, type Point } from './util'
 
 const side = 500
 
@@ -8,8 +8,8 @@ const radius = side / 2
 
 // 原点
 const origin: Point = {
-  x: side / 2,
-  y: side / 2,
+  x: side / 2 / 2,
+  y: side / 2 / 2.5,
 }
 
 const originAfterMoving: Point = {
@@ -27,8 +27,7 @@ const leftSideAnemosSketch = (p: p5SVG) => {
   }
 
   p.draw = () => {
-    // drawSquareForDev(p)
-
+    p.scale(2)
     drawAnemos(p, origin, originAfterMoving, radius)
   }
 }
