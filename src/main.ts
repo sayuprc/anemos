@@ -3,20 +3,23 @@ import init from 'p5.js-svg'
 import { leftSideAnemosSketch } from './left-side-anemos'
 import { rightSideAnemosSketch } from './right-side-anemos'
 import { anemosSketch } from './anemos'
+import './style.css'
 
 init(p5)
 
+const app = document.getElementById('app')
+
 const left = document.createElement('div')
 left.id = 'right'
-document.body.appendChild(left)
+app?.appendChild(left)
 
 const right = document.createElement('div')
 right.id = 'right'
-document.body.appendChild(right)
+app?.appendChild(right)
 
 const anemoses = document.createElement('div')
 anemoses.id = 'right'
-document.body.appendChild(anemoses)
+app?.appendChild(anemoses)
 
 new p5(leftSideAnemosSketch, left)
 new p5(rightSideAnemosSketch, right)
