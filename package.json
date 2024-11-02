@@ -13,13 +13,13 @@
 		"format:fix": "biome format --write ."
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.8.3",
+		"@biomejs/biome": "1.9.4",
 		"@types/p5": "^1.7.6",
-		"typescript": "^5.5.3",
-		"vite": "^5.4.0"
+		"typescript": "^5.6.3",
+		"vite": "^5.4.10"
 	},
 	"dependencies": {
-		"p5": "1.6.0",
+		"p5": "1.11.1",
 		"p5.js-svg": "^1.5.1"
 	}
 }
