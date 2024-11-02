@@ -29,7 +29,7 @@ node: ## Enter node container
 
 .PHONY: npm-install
 npm-install: ## Install packages
-	docker compose exec node npm i
+	docker compose run --rm node npm i
 
 .PHONY: help
 help: ## Display a list of targets
