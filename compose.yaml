@@ -1,6 +1,6 @@
 services:
   node:
-    image: anemos:20
+    image: anemos:22
     environment:
       LANG: ja_JP.UTF-8
       TZ: Asia/Tokyo

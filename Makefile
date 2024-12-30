@@ -4,7 +4,7 @@ SHELL := /bin/bash
 
 .PHONY: build
 build: ## Build docker image
-	docker build -t anemos:20 .
+	docker build -t anemos:22 .
 
 define deleteImage
 	@id=$$(docker images -f "reference=$(1)" -q); [ -n "$$id" ] && { docker rmi $$id; :; } || echo "image not found: $(1)"
