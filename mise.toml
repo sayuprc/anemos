@@ -1,3 +1,10 @@
+[tools]
+node = "22"
+
 [tasks.install]
 description = "npm パッケージをインストールする"
 run = "npm i"
+
+[tasks.dev]
+description = "dev サーバーを立ち上げる"
+run = "npm run dev"
