@@ -1,0 +1,3 @@
+[tasks.install]
+description = "npm パッケージをインストールする"
+run = "npm i"
