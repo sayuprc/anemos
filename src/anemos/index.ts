@@ -1,7 +1,7 @@
 import type { p5SVG } from 'p5.js-svg'
-import type { Point } from './util'
-import { drawAnemos as drawLeftSideAnemos } from './left-side-anemos'
-import { drawAnemos as drawRightSideAnemos } from './right-side-anemos'
+import type { Point } from '../utils'
+import { drawAnemos as drawLeftSideAnemos } from './left-side'
+import { drawAnemos as drawRightSideAnemos } from './right-side'
 
 const side = 500
 
