@@ -1,5 +1,5 @@
 import type { p5SVG } from 'p5.js-svg'
-import { fillWhite, fillBlack, fillBlue, calculateDivideCirclePoints, type Point } from './util'
+import { fillWhite, fillBlack, fillBlue, calculateDivideCirclePoints, type Point } from '../utils'
 
 const side = 500
 
@@ -17,13 +17,13 @@ const originAfterMoving: Point = {
   y: 0,
 }
 
-const rightSideAnemosSketch = (p: p5SVG) => {
+const leftSideAnemosSketch = (p: p5SVG) => {
   p.setup = () => {
     p.createCanvas(side, side, p.SVG)
     p.noLoop()
 
     const button = p.createButton('SVG ダウンロード')
-    button.mousePressed(() => p.save('anemos-right.svg'))
+    button.mousePressed(() => p.save('anemos-left.svg'))
   }
 
   p.draw = () => {
@@ -35,6 +35,7 @@ const rightSideAnemosSketch = (p: p5SVG) => {
 export const drawAnemos = (p: p5SVG, origin: Point, originAfterMoving: Point, radius: number) => {
   p.push()
   p.translate(origin.x, origin.y)
+  p.rotate(p.radians(30))
 
   // 葉の描画
   drawLeaves(p, radius)
@@ -52,45 +53,42 @@ const drawLeaves = (p: p5SVG, radius: number) => {
   // 左の葉
   p.noStroke()
 
-  p.point(240 - radius, 310 - radius)
+  p.point(235 - radius, 290 - radius)
   p.point(235 - radius, 325 - radius)
-  p.point(233 - radius, 340 - radius)
-  p.point(245 - radius, 396 - radius)
-  p.point(250 - radius, 384 - radius)
-  p.point(258 - radius, 370 - radius)
-  p.point(268 - radius, 350 - radius)
-  p.point(272 - radius, 330 - radius)
-  p.point(264 - radius, 302 - radius)
-  p.point(250 - radius, 300 - radius)
+  p.point(238 - radius, 340 - radius)
+  p.point(242 - radius, 360 - radius)
+  p.point(243 - radius, 379 - radius)
+  p.point(260 - radius, 350 - radius)
+  p.point(270 - radius, 330 - radius)
+  p.point(268 - radius, 300 - radius)
+  p.point(260 - radius, 290 - radius)
 
   p.stroke(0)
   p.strokeWeight(0.2)
 
   p.beginShape()
-  p.curveVertex(240 - radius, 310 - radius)
+  p.curveVertex(235 - radius, 290 - radius)
   p.curveVertex(235 - radius, 325 - radius)
-  p.curveVertex(233 - radius, 340 - radius)
-  p.curveVertex(245 - radius, 396 - radius)
-  p.curveVertex(250 - radius, 384 - radius)
-  p.curveVertex(258 - radius, 370 - radius)
-  p.curveVertex(268 - radius, 350 - radius)
-  p.curveVertex(272 - radius, 330 - radius)
-  p.curveVertex(264 - radius, 302 - radius)
-  p.curveVertex(250 - radius, 300 - radius)
-  p.curveVertex(240 - radius, 310 - radius)
+  p.curveVertex(238 - radius, 340 - radius)
+  p.curveVertex(242 - radius, 360 - radius)
+  p.curveVertex(243 - radius, 379 - radius)
+  p.curveVertex(260 - radius, 350 - radius)
+  p.curveVertex(270 - radius, 330 - radius)
+  p.curveVertex(268 - radius, 300 - radius)
+  p.curveVertex(260 - radius, 290 - radius)
+  p.curveVertex(235 - radius, 290 - radius)
   p.endShape()
 
   // 右の葉
   p.noStroke()
 
-  p.point(275 - radius, 290 - radius)
-  p.point(260 - radius, 290 - radius)
-  p.point(265 - radius, 300 - radius)
-  p.point(270 - radius, 310 - radius)
-  p.point(280 - radius, 325 - radius)
-  p.point(290 - radius, 332 - radius)
-  p.point(330 - radius, 350 - radius)
-  p.point(320 - radius, 335 - radius)
+  p.point(280 - radius, 290 - radius)
+  p.point(270 - radius, 300 - radius)
+  p.point(275 - radius, 325 - radius)
+  p.point(290 - radius, 340 - radius)
+  p.point(310 - radius, 352 - radius)
+  p.point(325 - radius, 360 - radius)
+  p.point(340 - radius, 364 - radius)
   p.point(305 - radius, 300 - radius)
   p.point(290 - radius, 290 - radius)
 
@@ -98,17 +96,16 @@ const drawLeaves = (p: p5SVG, radius: number) => {
   p.strokeWeight(0.2)
 
   p.beginShape()
-  p.curveVertex(275 - radius, 290 - radius)
-  p.curveVertex(260 - radius, 290 - radius)
-  p.curveVertex(265 - radius, 300 - radius)
-  p.curveVertex(270 - radius, 310 - radius)
-  p.curveVertex(280 - radius, 325 - radius)
-  p.curveVertex(290 - radius, 332 - radius)
-  p.curveVertex(330 - radius, 350 - radius)
-  p.curveVertex(320 - radius, 335 - radius)
+  p.curveVertex(280 - radius, 290 - radius)
+  p.curveVertex(270 - radius, 300 - radius)
+  p.curveVertex(275 - radius, 325 - radius)
+  p.curveVertex(290 - radius, 340 - radius)
+  p.curveVertex(310 - radius, 352 - radius)
+  p.curveVertex(325 - radius, 360 - radius)
+  p.curveVertex(340 - radius, 364 - radius)
   p.curveVertex(305 - radius, 300 - radius)
   p.curveVertex(290 - radius, 290 - radius)
-  p.curveVertex(275 - radius, 290 - radius)
+  p.curveVertex(270 - radius, 290 - radius)
   p.endShape()
 }
 
@@ -171,42 +168,12 @@ const drawPetal = (p: p5SVG, originAfterMoving: Point) => {
 }
 
 const drawFloralOrgans = (p: p5SVG, originAfterMoving: Point) => {
+  // 中心の円
   p.stroke(0)
-  fillBlack(p)
+  fillWhite(p)
   p.ellipse(originAfterMoving.x, originAfterMoving.y, 50)
-
-  // 口の色
-  p.fill(139, 44, 74)
-
-  p.strokeWeight(0.2)
-  p.point(250 - radius, 250 - radius)
-  p.point(240 - radius, 245 - radius)
-  p.point(228 - radius, 256 - radius)
-  p.point(243 - radius, 267 - radius)
-  p.point(249 - radius, 264 - radius)
-  p.point(251 - radius, 256 - radius)
-  p.point(258 - radius, 260 - radius)
-  p.point(265 - radius, 260 - radius)
-  p.point(268 - radius, 256 - radius)
-  p.point(270 - radius, 244 - radius)
-  p.point(255 - radius, 240 - radius)
-
-  p.beginShape()
-  p.curveVertex(250 - radius, 250 - radius)
-  p.curveVertex(250 - radius, 250 - radius)
-  p.curveVertex(240 - radius, 245 - radius)
-  p.curveVertex(228 - radius, 256 - radius)
-  p.curveVertex(243 - radius, 267 - radius)
-  p.curveVertex(249 - radius, 264 - radius)
-  p.curveVertex(251 - radius, 256 - radius)
-  p.curveVertex(258 - radius, 260 - radius)
-  p.curveVertex(265 - radius, 260 - radius)
-  p.curveVertex(268 - radius, 256 - radius)
-  p.curveVertex(270 - radius, 244 - radius)
-  p.curveVertex(255 - radius, 240 - radius)
-  p.curveVertex(250 - radius, 250 - radius)
-  p.curveVertex(250 - radius, 250 - radius)
-  p.endShape()
+  fillBlack(p)
+  p.ellipse(originAfterMoving.x, originAfterMoving.y, 30)
 }
 
-export { rightSideAnemosSketch }
+export { leftSideAnemosSketch }
